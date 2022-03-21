@@ -138,7 +138,7 @@ void *m0_alloc(size_t size)
 		M0_LOG(M0_ERROR, "Failed to allocate %zi bytes.", size);
 		m0_backtrace();
 	}
-	M0_LEAVE("ptr=%p size=%zi", area, size);
+	M0_LOG(M0_ALWAYS,"Jugal : ptr=%p size=%zi", area, size);
 	return area;
 }
 M0_EXPORTED(m0_alloc);
@@ -149,7 +149,7 @@ void m0_free(void *data)
 		size_t size = m0_arch_alloc_size(data);
 
 		M0_LOG(M0_DEBUG, "%p", data);
-
+		M0_LOG(M0_ALWAYS,"Jugal : ptr=%p ", data);
 		if (DEV_MODE) {
 			m0_atomic64_sub(&allocated, size);
 			m0_atomic64_add(&cumulative_free, size);
