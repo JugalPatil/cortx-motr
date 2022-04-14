@@ -367,8 +367,8 @@ M0_INTERNAL int m0_be_seg_open(struct m0_be_seg *seg)
 	errno = 0;
 	p = mmap(g->sg_addr, g->sg_size, PROT_READ | PROT_WRITE,
 		 MAP_FIXED | MAP_PRIVATE | MAP_NORESERVE, fd, g->sg_offset);
-	M0_LOG(M0_ALWAYS,"Jugal -> mmap out : %p",p);
 	M0_LOG(M0_ALWAYS, "Jugal -> mmap errno : %d",errno);
+	M0_LOG(M0_ALWAYS,"Jugal -> mmap out : %p",p);
 	// m0_console_printf("Jugal -> after mmap call g->sg_addr=%p size=%" PRId64, g->sg_addr,g->sg_size);
 	M0_LOG(M0_ALWAYS, "Jugal -> after mmap size=%" PRId64 " addr=%p " "offset=%" PRId64 " id=%"PRId64, g->sg_size, g->sg_addr, g->sg_offset, g->sg_id);
 	if (p != g->sg_addr) {
