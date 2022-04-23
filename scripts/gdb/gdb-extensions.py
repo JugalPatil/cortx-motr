@@ -132,8 +132,8 @@ Total: 2
 		argv = gdb.string_to_argv(arg)
 		argc = len(argv)
 		if argc not in (1, 4, 5):
-			print('Error: Usage: m0-list-print [&]list' \
-				' [[struct|union] tag link [visit|"in-detail"]]')
+			print('Error: Usage: m0-list-print [&]list'
+			      ' [[struct|union] tag link [visit|"in-detail"]]')
 			return
 
 		vhead, head, ok = self.get_head(argv)
@@ -194,7 +194,7 @@ Total: 2
 
 		if argc in (4, 5):
 			if argv[1] not in ("struct", "union"):
-				print('Error: Argument 2 must be ' + \
+				print('Error: Argument 2 must be ' + 
 				      'either "struct" or "union"')
 				return 0, None, False
 
@@ -308,8 +308,8 @@ Usage: m0-indexvec-print [&]m0_indexvec
 
 		print("   :seg_num index count")
 		for i in range(nr_seg):
-			index = int(v_ivec['iv_index'][i])
-			count = int(v_ivec['iv_vec']['v_count'][i])
+			index = long(v_ivec['iv_index'][i])
+			count = long(v_ivec['iv_vec']['v_count'][i])
 			print("seg:", i, index, count)
 			total_count += count
 
