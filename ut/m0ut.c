@@ -162,6 +162,7 @@ extern struct m0_ut_suite sns_cm_repreb_ut;
 extern struct m0_ut_suite snscm_net_ut;
 extern struct m0_ut_suite snscm_storage_ut;
 extern struct m0_ut_suite snscm_xform_ut;
+extern struct m0_ut_suite snscm_reb_xform_ut;
 extern struct m0_ut_suite spiel_ut;
 extern struct m0_ut_suite spiel_ci_ut;
 extern struct m0_ut_suite sss_ut;
@@ -305,6 +306,7 @@ static void tests_add(struct m0_ut_module *m)
 	m0_ut_add(m, &session_ut, true);
 	m0_ut_add(m, &sm_ut, true);
 	m0_ut_add(m, &snscm_xform_ut, true);
+	m0_ut_add(m, &snscm_reb_xform_ut, true);
 	m0_ut_add(m, &snscm_storage_ut, true);
 	m0_ut_add(m, &sns_cm_repreb_ut, true);
 	m0_ut_add(m, &snscm_net_ut, true);

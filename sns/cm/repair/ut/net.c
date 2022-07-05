@@ -730,7 +730,7 @@ static void buf_available(struct m0_net_buffer_pool *pool)
 {
 }
 
-const struct m0_net_buffer_pool_ops bp_ops = {
+const struct m0_net_buffer_pool_ops rep_bp_ops = {
         .nbpo_not_empty       = buf_available,
         .nbpo_below_threshold = bp_below_threshold
 };
@@ -788,7 +788,7 @@ static void sender_init()
 	rc = m0_net_buffer_pool_init(&nbp, ndom, 0, seg_nr, seg_size,
 				     colours, M0_0VEC_SHIFT, false);
 	M0_UT_ASSERT(rc == 0);
-	nbp.nbp_ops = &bp_ops;
+	nbp.nbp_ops = &rep_bp_ops;
 	m0_net_buffer_pool_lock(&nbp);
         nr_bufs = m0_net_buffer_pool_provision(&nbp, 4);
 	m0_net_buffer_pool_unlock(&nbp);

@@ -112,11 +112,11 @@ spiel_sns_repair_and_rebalance_test()
 
 	disk_state_get "$fail_device1" "$fail_device2" "$fail_device3" || return "$?"
 
-        echo "Testing SNS rebalance abort with new disk failure..."
-	rebalance_abort 1 9
+    #     echo "Testing SNS rebalance abort with new disk failure..."
+	# rebalance_abort 1 9
 
-	echo "Testing SNS rebalance abort with repaired disk failure..."
-	rebalance_abort 1 1
+	# echo "Testing SNS rebalance abort with repaired disk failure..."
+	# rebalance_abort 1 1
 	#######################################################################
 	#  End                                                                #
 	#######################################################################

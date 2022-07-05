@@ -53,10 +53,10 @@ M0_INTERNAL void m0_mutex_lock(struct m0_mutex *mutex)
 	M0_PRE(m0_mutex_is_not_locked(mutex));
 	if (ma == NULL)
 		m0_arch_mutex_lock(&mutex->m_arch);
-	else {
-		M0_ADDB2_HIST(ma->ma_id, &ma->ma_wait, m0_ptr_wrap(mutex),
-			      m0_arch_mutex_lock(&mutex->m_arch));
-		ma->ma_taken = m0_time_now();
+	else { 
+		// M0_ADDB2_HIST(ma->ma_id, &ma->ma_wait, m0_ptr_wrap(mutex),
+		// 	      m0_arch_mutex_lock(&mutex->m_arch));
+		// ma->ma_taken = m0_time_now();
 	}
 	M0_ASSERT(mutex->m_owner == NULL);
 	mutex->m_owner = m0_thread_self();
