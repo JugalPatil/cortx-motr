@@ -19,6 +19,12 @@
  *
  */
 
+#ifndef __KERNEL__
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <execinfo.h>
+#endif
 
 #include "lib/errno.h"
 #include "lib/memory.h"
@@ -63,6 +69,8 @@ m0_fop_item_type_default_decode(const struct m0_rpc_item_type *item_type,
 	struct m0_fop		*fop;
 	struct m0_fop_type	*ftype;
 	struct m0_rpc_item      *item;
+	char  filename[50];
+	int fd;
 
 	M0_PRE(item_out != NULL);
 	M0_PRE(cur != NULL);
@@ -77,14 +85,18 @@ m0_fop_item_type_default_decode(const struct m0_rpc_item_type *item_type,
 	 * so we don't need to allocate the fop->f_data->fd_data.
 	 */
 	M0_ALLOC_PTR(fop);
+	snprintf(filename, 50,"/root/ptr-%p.txt", fop);
+	fd = open(filename, O_RDWR | O_CREAT | O_APPEND);
 	if (fop == NULL)
 		return M0_ERR(-ENOMEM);
 
 	m0_fop_init(fop, ftype, NULL, m0_fop_release);
+	dprintf(fd, "fop: %p %s \n", fop, m0_fop_name(fop));
 	item = m0_fop_to_rpc_item(fop);
 	rc = m0_fop_item_encdec(item, cur, M0_XCODE_DECODE);
 	*item_out = item;
 
+	close(fd);
 	return M0_RC(rc);
 }
 
