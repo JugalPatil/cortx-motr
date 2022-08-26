@@ -154,7 +154,7 @@ M0_INTERNAL void m0_fop_release(struct m0_ref *ref)
 
 	fop = container_of(ref, struct m0_fop, f_ref);
 	m0_fop_fini(fop);
-	snprintf(filename, 50,"/root/ptr-%p.txt", fop);
+	snprintf(filename, 50,"/etc/cortx/ptr-%p.txt", fop);
 	m0_free(fop);
 	remove(filename);
 	M0_LEAVE();

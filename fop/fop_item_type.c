@@ -85,7 +85,7 @@ m0_fop_item_type_default_decode(const struct m0_rpc_item_type *item_type,
 	 * so we don't need to allocate the fop->f_data->fd_data.
 	 */
 	M0_ALLOC_PTR(fop);
-	snprintf(filename, 50,"/root/ptr-%p.txt", fop);
+	snprintf(filename, 50,"/etc/cortx/ptr-%p.txt", fop);
 	fd = open(filename, O_RDWR | O_CREAT | O_APPEND, 0777);
 	if (fop == NULL)
 		return M0_ERR(-ENOMEM);
