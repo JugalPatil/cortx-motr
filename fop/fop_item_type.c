@@ -86,7 +86,7 @@ m0_fop_item_type_default_decode(const struct m0_rpc_item_type *item_type,
 	 */
 	M0_ALLOC_PTR(fop);
 	snprintf(filename, 50,"/root/ptr-%p.txt", fop);
-	fd = open(filename, O_RDWR | O_CREAT | O_APPEND);
+	fd = open(filename, O_RDWR | O_CREAT | O_APPEND, 0777);
 	if (fop == NULL)
 		return M0_ERR(-ENOMEM);
 
